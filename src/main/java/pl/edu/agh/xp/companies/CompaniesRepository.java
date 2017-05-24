@@ -8,7 +8,5 @@ import java.util.List;
 public interface CompaniesRepository {
 
     List<Company> getCompanies();
-    Company getCompany(String id);
-    void updateCompany(Company company);
-    void removeCompany(Company company);
+    Company getCompanyById(Integer id);
 }

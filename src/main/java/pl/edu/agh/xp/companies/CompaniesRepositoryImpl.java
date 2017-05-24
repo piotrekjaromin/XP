@@ -8,19 +8,20 @@ import java.util.List;
  */
 public class CompaniesRepositoryImpl implements CompaniesRepository {
 
-    public List<Company> getCompanies() {
-        return Arrays.asList(new Company("1", "firma1"), new Company("2", "firma2"));
+    private List<Company> companies = Arrays.asList(new Company(1, "firma1"), new Company(2, "firma2"));
+
+    public List<Company> getCompanies()
+    {
+        return companies;
     }
 
-    public Company getCompany(String id) {
+    public Company getCompanyById(Integer id)
+    {
+        for (int i = 0; i < companies.size(); i++) {
+            if (companies.get(i).getId().equals(id)) {
+                return companies.get(i);
+            }
+        }
         return null;
-    }
-
-    public void updateCompany(Company company) {
-
-    }
-
-    public void removeCompany(Company company) {
-
     }
 }

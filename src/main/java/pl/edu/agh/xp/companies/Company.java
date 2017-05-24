@@ -5,19 +5,19 @@ package pl.edu.agh.xp.companies;
  */
 public class Company {
 
-    private String id;
+    private Integer id;
     private String name;
 
-    public Company(String id, String name) {
+    public Company(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
