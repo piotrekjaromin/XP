@@ -1,12 +1,12 @@
 package pl.edu.agh.xp.files;
 
+import org.apache.commons.csv.CSVRecord;
+
+import java.util.List;
+
 public interface FileManagerInterface {
 
-    void openFile(String filePath);
-    void closeFile();
-
-    String readLine();
-    String readLine(int lineNumber);
+    List<CSVRecord> readCsvFile(String filePath, String... headers);
 
     void writeLine(String line);
     void updateLine(int lineNumber, String line);
