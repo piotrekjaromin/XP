@@ -8,32 +8,54 @@ import java.util.Scanner;
  */
 public class ProjectView {
 
+    private ProjectController projectController;
     private List<Project> projectList;
+
+    private Scanner scanner;
+
+    public ProjectView() {
+        scanner = new Scanner(System.in);
+    }
 
     public void displayProject(List<Project> projectList) {
         this.projectList = projectList;
 
-        System.out.println();
-        System.out.println("Projects: ");
+        System.out.println("\nProjects: ");
         projectList.stream().forEach(project -> System.out.println("Name: " + project.getName() + ", Id: " + project.getId()));
+
+        // musi tak byc, bo czekanie na wejscie w kontrolerze dziala tylko w przypadku aplikacji konsolowej, albo jakbysmy mieli to jakos reaktywnie zrobione
+        // ale nie mamy, takze widok musi powiadamiac kontroler jak uzytkownik wykona jakas akcje
+        waitForUserInteraction();
     }
 
-    public String getUserSelection() {
-        System.out.println("Wybierz projekt: ");
+    private void waitForUserInteraction() {
+        System.out.println("Wybierz projekt (0 by wrócić): ");
 
-        int chosenProjectNo = readUserInput();
-        while (chosenProjectNo > projectList.size() || chosenProjectNo < 0) {
-            System.out.println("Nie ma takiego projektu.");
-            chosenProjectNo = readUserInput();
+        int userInput = readUserInput();
+        while (userInput > projectList.size() || userInput < 0) {
+            System.out.println("Błąd wczytywania");
+            userInput = readUserInput();
         }
 
-        Project chosenProject = projectList.get(chosenProjectNo - 1);
-        System.out.println("Wybrano projekt: " + chosenProject.getName());
-        return chosenProject.getId();
+        handleUserInput(userInput);
+    }
+
+    private void handleUserInput(int userInput) {
+        if (userInput == 0) {
+            projectController.onBackPressed();
+        } else {
+            Project chosenProject = projectList.get(userInput - 1);
+            System.out.println("Wybrano: " + chosenProject.getName());
+            projectController.onProjectSelected(chosenProject.getId());
+        }
     }
 
     private int readUserInput() {
-        Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
+    }
+
+
+    public void setProjectController(ProjectController projectController) {
+        this.projectController = projectController;
     }
 }
