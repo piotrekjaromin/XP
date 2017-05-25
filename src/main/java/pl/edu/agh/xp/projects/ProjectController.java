@@ -15,5 +15,7 @@ public class ProjectController {
 
     public void loadData(String companyId) {
         projectView.displayProject(projectRepository.getProjectsByCompany(companyId));
+
+        String selectedId = projectView.getUserSelection();
     }
 }
