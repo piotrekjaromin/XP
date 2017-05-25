@@ -1,5 +1,8 @@
 package pl.edu.agh.xp.companies;
 
+import java.util.List;
+import java.util.Scanner;
+
 /**
  * Created by Pawel on 2017-04-20
  */
@@ -19,6 +22,11 @@ public class CompaniesController {
     }
 
     public void start() {
-        view.showCompanies(companyRepository.getCompanies());
+        List<Company> listOfCompanies = companyRepository.getCompanies();
+        view.showCompanies(listOfCompanies);
+    }
+
+    public String getCompanyNameById(int choice) {
+        return companyRepository.getCompanyById(choice).getName();
     }
 }

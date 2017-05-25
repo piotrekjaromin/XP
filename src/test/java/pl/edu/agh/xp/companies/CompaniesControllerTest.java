@@ -16,22 +16,13 @@ public class CompaniesControllerTest {
 
         @Override
         public List<Company> getCompanies() {
-            return Arrays.asList(new Company("56", "dsds"), new Company("78", "koko"));
+            return Arrays.asList(new Company(56, "dsds"), new Company(78, "koko"));
         }
 
         @Override
-        public Company getCompany(String id) {
+        public Company getCompanyById(Integer id)
+        {
             return null;
-        }
-
-        @Override
-        public void updateCompany(Company company) {
-
-        }
-
-        @Override
-        public void removeCompany(Company company) {
-
         }
     }
 
