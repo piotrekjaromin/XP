@@ -16,15 +16,10 @@ public class FileManagerImpl implements FileManagerInterface {
 
     @Override
     public List<CSVRecord> readCsvFile(String filePath, String... headers) {
-        Iterable<CSVRecord> records = null;
-        try {
-            Reader in = new FileReader(filePath);
-            records = CSVFormat.EXCEL.withHeader(headers).parse(in);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        List<CSVRecord> recordsList = new ArrayList<>();
-        if (records != null) {
+        try (Reader in = new FileReader(filePath)) {
+            Iterable<CSVRecord> records = CSVFormat.EXCEL.withHeader(headers).parse(in);
+
+            List<CSVRecord> recordsList = new ArrayList<>();
             Iterator<CSVRecord> it = records.iterator();
             if (headers.length > 0) {
                 it.next(); // skip headers
@@ -32,8 +27,12 @@ public class FileManagerImpl implements FileManagerInterface {
             while (it.hasNext()) {
                 recordsList.add(it.next());
             }
+
+            return recordsList;
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return recordsList;
+        return null;
     }
 
 
@@ -51,11 +50,11 @@ public class FileManagerImpl implements FileManagerInterface {
             e.printStackTrace();
         } finally {
 
-            if(bufferedWriter != null) {
+            if (bufferedWriter != null) {
                 bufferedWriter.close();
             }
 
-            if(fileWriter != null) {
+            if (fileWriter != null) {
                 fileWriter.close();
             }
 
