@@ -6,6 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -44,4 +47,15 @@ public class FileManagerTests {
         assertEquals("Third line should have CompanyName='Company no 3'",
                 "Company no 3", csvRecords.get(2).get(FilesConfig.COMPANIES_FILE_HEADERS[1]));
     }
+
+    @Test
+    public void testWriteFile() throws IOException {
+        // given
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource("sample-companies.txt").getFile());
+        String path = file.getAbsolutePath();
+       new FileManagerImpl().writeLine("4,Company no 4", path);
+    }
+
+
 }

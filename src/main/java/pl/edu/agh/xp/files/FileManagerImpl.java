@@ -3,9 +3,7 @@ package pl.edu.agh.xp.files;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -40,7 +38,28 @@ public class FileManagerImpl implements FileManagerInterface {
 
 
     @Override
-    public void writeLine(String line) {
+    public void writeLine(String line, String fileName) throws IOException {
+
+        FileWriter fileWriter = null;
+        BufferedWriter bufferedWriter = null;
+        try {
+            fileWriter = new FileWriter(fileName, true);
+            bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(line);
+            bufferedWriter.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+
+            if(bufferedWriter != null) {
+                bufferedWriter.close();
+            }
+
+            if(fileWriter != null) {
+                fileWriter.close();
+            }
+
+        }
 
     }
 
