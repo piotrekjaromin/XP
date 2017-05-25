@@ -1,13 +1,14 @@
 package pl.edu.agh.xp.files;
 
+import org.apache.commons.csv.CSVRecord;
+
+import java.io.IOException;
+import java.util.List;
+
 public interface FileManagerInterface {
 
-    void openFile(String filePath);
-    void closeFile();
+    List<CSVRecord> readCsvFile(String filePath, String... headers);
 
-    String readLine();
-    String readLine(int lineNumber);
-
-    void writeLine(String line);
+    void writeLine(String line, String fileName) throws IOException;
     void updateLine(int lineNumber, String line);
 }
