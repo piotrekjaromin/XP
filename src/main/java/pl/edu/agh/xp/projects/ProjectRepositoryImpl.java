@@ -9,11 +9,11 @@ import java.util.List;
  */
 public class ProjectRepositoryImpl implements ProjectRepository {
 
-    public List<Project> getProjectsByCompany(String companyId) {
+    public List<Project> getProjectsByCompany(Integer companyId) {
         return Arrays.asList(
-                new Project("123", "1", "Truskawka", 10),
-                new Project("333", "2", "Malina", 12),
-                new Project("234", "2", "Koktajl", 7)
+                new Project("123", 1, "Truskawka", 10),
+                new Project("333", 2, "Malina", 12),
+                new Project("234", 2, "Koktajl", 7)
         );
     }
 

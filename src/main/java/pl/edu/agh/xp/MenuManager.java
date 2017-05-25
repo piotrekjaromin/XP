@@ -17,10 +17,11 @@ public class MenuManager {
     }
 
     public void start() {
+        companiesController.setMenuManager(this);
         companiesController.start();
     }
 
-    public void onCompanyChosen(String companyId) {
+    public void onCompanyChosen(Integer companyId) {
         projectController.setMenuManager(this);
         projectController.loadData(companyId);
     }

@@ -21,7 +21,7 @@ public class ProjectController {
         this.menuManager = menuManager;
     }
 
-    public void loadData(String companyId) {
+    public void loadData(Integer companyId) {
         projectView.displayProject(projectRepository.getProjectsByCompany(companyId));
 
         String selectedId = projectView.getUserSelection();
