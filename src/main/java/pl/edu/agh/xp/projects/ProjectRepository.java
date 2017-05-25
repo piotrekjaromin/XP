@@ -7,6 +7,6 @@ import java.util.List;
  */
 public interface ProjectRepository {
 
-    List<Project> getProjectsByCompany(String companyId);
+    List<Project> getProjectsByCompany(Integer companyId);
     void updateProject(Project project);
 }

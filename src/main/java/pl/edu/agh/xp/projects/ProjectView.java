@@ -13,6 +13,7 @@ public class ProjectView {
     public void displayProject(List<Project> projectList) {
         this.projectList = projectList;
 
+        System.out.println();
         System.out.println("Projects: ");
         projectList.stream().forEach(project -> System.out.println("Name: " + project.getName() + ", Id: " + project.getId()));
     }
@@ -26,7 +27,9 @@ public class ProjectView {
             chosenProjectNo = readUserInput();
         }
 
-        return projectList.get(chosenProjectNo - 1).getId();
+        Project chosenProject = projectList.get(chosenProjectNo - 1);
+        System.out.println("Wybrano projekt: " + chosenProject.getName());
+        return chosenProject.getId();
     }
 
     private int readUserInput() {

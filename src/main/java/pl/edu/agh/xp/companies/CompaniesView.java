@@ -12,6 +12,7 @@ public class CompaniesView {
     }
 
     public void showCompanies(List<Company> companies) {
+        System.out.println();
         companies.stream().forEach(company -> System.out.println("Company | id: " + company.getId() + ", name: " + company.getName()));
     }
 
@@ -22,6 +23,6 @@ public class CompaniesView {
     }
 
     public void chosenCompany(String name) {
-        System.out.printf("Wybrałeś " + name);
+        System.out.println("Wybrałeś " + name);
     }
 }

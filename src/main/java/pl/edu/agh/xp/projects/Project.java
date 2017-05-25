@@ -6,11 +6,11 @@ package pl.edu.agh.xp.projects;
 public class Project {
 
     private String id;
-    private String companyId;
+    private Integer companyId;
     private String name;
     private float workedDays;
 
-    public Project(String id, String companyId, String name, float workedDays) {
+    public Project(String id, Integer companyId, String name, float workedDays) {
         this.id = id;
         this.companyId = companyId;
         this.name = name;
@@ -21,7 +21,7 @@ public class Project {
         return id;
     }
 
-    public String getCompanyId() {
+    public Integer getCompanyId() {
         return companyId;
     }
 
