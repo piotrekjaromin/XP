@@ -24,6 +24,9 @@ public class CompaniesController {
     public void start() {
         List<Company> listOfCompanies = companyRepository.getCompanies();
         view.showCompanies(listOfCompanies);
+        int choice = view.chooseCompany();
+        view.chosenCompany(getCompanyNameById(choice));
+
     }
 
     public String getCompanyNameById(int choice) {
