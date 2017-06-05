@@ -1,38 +1,39 @@
 package pl.edu.agh.xp.companies;
 
-import pl.edu.agh.xp.MenuManager;
+import pl.edu.agh.xp.Controller;
+import pl.edu.agh.xp.MenuController;
 
+import javax.naming.ldap.Control;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Created by Pawel on 2017-04-20
  */
-public class CompaniesController {
+public class CompaniesController implements Controller {
 
     private CompaniesRepository companyRepository;
     private CompaniesView view;
 
-    private MenuManager menuManager;
-
-    public CompaniesController() {
-        this.companyRepository = new CompaniesRepositoryImpl();
-        this.view = new CompaniesView();
-    }
+    private MenuController menuController;
 
     public CompaniesController(CompaniesRepository companyRepository, CompaniesView view) {
         this.companyRepository = companyRepository;
         this.view = view;
     }
 
-    public void start() {
+    public void initialize(MenuController menuController) {
+        this.menuController = menuController;
+    }
+
+    @Override
+    public void display() {
         List<Company> listOfCompanies = companyRepository.getCompanies();
         view.showCompanies(listOfCompanies);
         int choice = view.chooseCompany();
         view.chosenCompany(getCompanyNameById(choice));
 
-        if (menuManager != null) {
-            menuManager.onCompanyChosen(choice);
+        if (menuController != null) {
+            menuController.showProjectsView(choice);
         }
     }
 
@@ -40,7 +41,4 @@ public class CompaniesController {
         return companyRepository.getCompanyById(choice).getName();
     }
 
-    public void setMenuManager(MenuManager menuManager) {
-        this.menuManager = menuManager;
-    }
 }

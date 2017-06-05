@@ -1,32 +1,41 @@
 package pl.edu.agh.xp.projects;
 
-import pl.edu.agh.xp.MenuManager;
+import pl.edu.agh.xp.Controller;
+import pl.edu.agh.xp.MenuController;
 
 /**
  * Created by SB on 2017-05-04
  */
-public class ProjectController {
+public class ProjectController implements Controller {
 
     private ProjectRepository projectRepository;
     private ProjectView projectView;
 
-    private MenuManager menuManager;
+    private MenuController menuController;
+    private Integer companyId;
 
     public ProjectController(ProjectRepository projectRepository, ProjectView projectView) {
         this.projectRepository = projectRepository;
         this.projectView = projectView;
     }
 
-    public void setMenuManager(MenuManager menuManager) {
-        this.menuManager = menuManager;
+    public void initialize(Integer companyId, MenuController menuController) {
+        this.menuController = menuController;
+        this.companyId = companyId;
+
+        this.projectView.setProjectController(this);
     }
 
-    public void loadData(Integer companyId) {
+    @Override
+    public void display() {
         projectView.displayProject(projectRepository.getProjectsByCompany(companyId));
+    }
 
-        String selectedId = projectView.getUserSelection();
-        if (menuManager != null) {
-            menuManager.onProjectChosen(selectedId);
-        }
+    public void onProjectSelected(String projectId) {
+        menuController.showProjectTimetable(projectId);
+    }
+
+    public void onBackPressed() {
+        menuController.back();
     }
 }

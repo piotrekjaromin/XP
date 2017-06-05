@@ -40,7 +40,7 @@ public class CompaniesControllerTest {
     public void showCompaniesTest() {
         MockCompaniesView view = new MockCompaniesView();
         CompaniesController controller = new CompaniesController(new MockCompaniesRepository(), view);
-        controller.start();
+        controller.display();
 
         Assert.assertTrue(view.companiesShown);
 
