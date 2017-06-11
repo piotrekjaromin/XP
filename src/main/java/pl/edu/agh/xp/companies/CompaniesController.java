@@ -30,15 +30,10 @@ public class CompaniesController implements Controller {
         List<Company> listOfCompanies = companyRepository.getCompanies();
         view.showCompanies(listOfCompanies);
         int choice = view.chooseCompany();
-        view.chosenCompany(getCompanyNameById(choice));
+        view.chosenCompany(String.valueOf(choice));
 
         if (menuController != null) {
             menuController.showProjectsView(choice);
         }
     }
-
-    public String getCompanyNameById(int choice) {
-        return companyRepository.getCompanyById(choice).getName();
-    }
-
 }

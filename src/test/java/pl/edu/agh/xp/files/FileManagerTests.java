@@ -5,8 +5,7 @@ import org.apache.commons.csv.CSVRecord;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -26,7 +25,7 @@ public class FileManagerTests {
     public void testReadFile() {
         // given
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("sample-companies.csv").getFile());
+        File file = new File(classLoader.getResource("sample-companies-to-read.csv").getFile());
         String path = file.getAbsolutePath();
 
         // when
@@ -51,11 +50,39 @@ public class FileManagerTests {
     @Test
     public void testWriteFile() throws IOException {
         // given
+        String textToWrite = "4,Company no 4";
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("sample-companies.txt").getFile());
+        File file = new File(classLoader.getResource("sample-companies-to-write.csv").getFile());
         String path = file.getAbsolutePath();
-       new FileManagerImpl().writeLine("4,Company no 4", path);
-    }
 
+        // when
+        new FileManagerImpl().writeLine(textToWrite, path);
+
+        // then
+        BufferedReader br = null;
+        FileReader fr = null;
+        String lastLine = null;
+        try {
+            fr = new FileReader(file.getAbsolutePath());
+            br = new BufferedReader(fr);
+            String sCurrentLine;
+            while ((sCurrentLine = br.readLine()) != null) {
+                lastLine = sCurrentLine;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (br != null)
+                    br.close();
+                if (fr != null)
+                    fr.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+
+        assertEquals(textToWrite, lastLine);
+    }
 
 }
