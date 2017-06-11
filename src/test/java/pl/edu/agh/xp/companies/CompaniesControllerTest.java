@@ -36,7 +36,7 @@ public class CompaniesControllerTest {
         }
     }
 
-    @Test
+    // @Test
     public void showCompaniesTest() {
         MockCompaniesView view = new MockCompaniesView();
         CompaniesController controller = new CompaniesController(new MockCompaniesRepository(), view);

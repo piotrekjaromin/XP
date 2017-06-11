@@ -8,7 +8,6 @@ import java.util.List;
 public interface FileManagerInterface {
 
     List<CSVRecord> readCsvFile(String filePath, String... headers);
-
     void writeLine(String line, String fileName) throws IOException;
-    void updateLine(int lineNumber, String line);
+
 }

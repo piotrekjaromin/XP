@@ -26,7 +26,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
         String path = getAbsFilepath();
         if (path != null) {
             List<CSVRecord> csvRecords = fileManager.readCsvFile(path, FilesConfig.PROJECTS_FILE_HEADERS);
-            return parseCsvToProjects(csvRecords);
+            return parseCsvToProjects(csvRecords, companyId);
         }
 
         return Collections.emptyList();
@@ -36,14 +36,15 @@ public class ProjectRepositoryImpl implements ProjectRepository {
         // TODO: 2017-05-04
     }
 
-    private List<Project> parseCsvToProjects(List<CSVRecord> csvRecords) {
+    private List<Project> parseCsvToProjects(List<CSVRecord> csvRecords, Integer companyIdToMatch) {
         List<Project> parsedProjects = new ArrayList<>();
         for (CSVRecord csvRecord : csvRecords) {
             String id = csvRecord.get(0);
             String name = csvRecord.get(1);
             Integer companyId = Integer.valueOf(csvRecord.get(2));
 
-            parsedProjects.add(new Project(id, companyId, name, 0));
+            if(companyId.equals(companyIdToMatch))
+                parsedProjects.add(new Project(id, companyId, name, 0));
         }
 
         return parsedProjects;
