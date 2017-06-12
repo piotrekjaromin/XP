@@ -1,0 +1,12 @@
+Testing reading files functionality
+
+!define TEST_SYSTEM {slim}
+!path /Users/beata/Documents/IntelliJ-workspace/timemanager/target/timemanager-1.0-SNAPSHOT-jar-with-dependencies.jar
+
+!|import|
+|pl.edu.agh.xp.fixtures|
+
+!|FileManagerFixture|
+|filePath|fileType|validateReadFile?|
+|/Users/beata/Documents/IntelliJ-workspace/timemanager/src/main/resources/sample-companies.csv|COMPANIES|1,Company no 1&2,Company no 2&3,Company no 3&|
+|/Users/beata/Documents/IntelliJ-workspace/timemanager/src/main/resources/sample-projects.csv|PROJECTS|1,Project One,1&2,Project Two,1&3,Project Three,2&4,Project Four,3&|
