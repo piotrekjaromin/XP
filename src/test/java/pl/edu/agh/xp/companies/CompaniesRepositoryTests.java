@@ -59,7 +59,7 @@ public class CompaniesRepositoryTests {
 
     private List<CSVRecord> getSampleCompaniesRecords() {
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("sample-companies-to-read.csv").getFile());
+        File file = new File(classLoader.getResource("sample-companies.csv").getFile());
         String path = file.getAbsolutePath();
         List<CSVRecord> recordsList = null;
         try (Reader in = new FileReader(path)) {

@@ -8,7 +8,14 @@ import java.util.Scanner;
  */
 public class CompaniesView {
 
+    private Scanner scanner;
+
     public CompaniesView() {
+        scanner = new Scanner(System.in);
+    }
+
+    public CompaniesView(Scanner scanner) {
+        this.scanner = scanner;
     }
 
     public void showCompanies(List<Company> companies) {
@@ -17,7 +24,6 @@ public class CompaniesView {
     }
 
     public int chooseCompany() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Wybierz firmę");
         return scanner.nextInt();
     }

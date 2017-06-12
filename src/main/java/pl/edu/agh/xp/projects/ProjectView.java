@@ -17,6 +17,10 @@ public class ProjectView {
         scanner = new Scanner(System.in);
     }
 
+    public ProjectView(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
     public void displayProject(List<Project> projectList) {
         this.projectList = projectList;
 

@@ -6,8 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -25,7 +23,7 @@ public class FileManagerTests {
     public void testReadFile() {
         // given
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("sample-companies-to-read.csv").getFile());
+        File file = new File(classLoader.getResource("sample-companies.csv").getFile());
         String path = file.getAbsolutePath();
 
         // when
