@@ -1,0 +1,13 @@
+Testing companies functionality
+
+!define TEST_SYSTEM {slim}
+!path /Users/beata/Documents/IntelliJ-workspace/timemanager/target/classes
+
+!|import|
+|pl.edu.agh.xp.companies|
+
+Simple Test
+
+!|Company|
+|id|name|getId?|getName?|
+|1|CompanyName|1|CompanyName|
