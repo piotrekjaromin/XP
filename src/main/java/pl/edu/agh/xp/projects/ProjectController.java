@@ -32,7 +32,9 @@ public class ProjectController implements Controller {
     }
 
     public void onProjectSelected(String projectId) {
-        menuController.showProjectTimetable(projectId);
+        if (menuController != null) {
+            menuController.showProjectTimetable(projectId);
+        }
     }
 
     public void onBackPressed() {
