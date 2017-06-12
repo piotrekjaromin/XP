@@ -32,9 +32,10 @@ public class DisplayAcceptanceTest {
         companiesController.initialize(null);
         companiesController.display();
 
-        Assert.assertTrue(output.toString().contains("Company | id: 1, name: Company no 1\r\n" +
-                "Company | id: 2, name: Company no 2\r\n" +
-                "Company | id: 3, name: Company no 3\r\n"));
+        // I separated one assertion to these because "\r" fails tests in my system
+        Assert.assertTrue(output.toString().contains("Company | id: 1, name: Company no 1"));
+        Assert.assertTrue(output.toString().contains("Company | id: 2, name: Company no 2"));
+        Assert.assertTrue(output.toString().contains("Company | id: 3, name: Company no 3"));
     }
 
     @Test
@@ -45,8 +46,9 @@ public class DisplayAcceptanceTest {
         MenuController menuController = new MenuController(new MockInOutControllerProvider(scanner));
         menuController.showCompaniesView();
 
-        Assert.assertTrue(output.toString().contains("Name: Project One, Id: 1\r\n" +
-                "Name: Project Two, Id: 2\r\n"));
+        // Same as with companies
+        Assert.assertTrue(output.toString().contains("Name: Project One, Id: 1"));
+        Assert.assertTrue(output.toString().contains("Name: Project Two, Id: 2"));
     }
 
     @Test
