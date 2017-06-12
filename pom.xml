@@ -18,6 +18,7 @@
                 </configuration>
             </plugin>
 
+            <!-- Running Unit Tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -38,12 +39,37 @@
                 </executions>
             </plugin>
 
+            <!-- Acceptance Tests -->
+            <plugin>
+                <groupId>nl.sijpesteijn.testing.fitnesse.plugins</groupId>
+                <artifactId>mafia-maven-plugin</artifactId>
+                <version>2.1.12</version>
+                <configuration>
+                    <fitNessePort>9090</fitNessePort>
+                    <wikiRoot>${basedir}</wikiRoot>
+                    <nameRootPage>FitNesseRoot</nameRootPage>
+                    <retainDays>14</retainDays>
+                    <jvmArguments>
+                        <jvmArgument>CM_SYSTEM=fitnesse.wiki.cmSystems.GitCmSystem</jvmArgument>
+                    </jvmArguments>
+                    <jvmDependencies>
+                        <dependency>
+                            <groupId>nl.abc.fitnesse</groupId>
+                            <artifactId>fitnesse-plugin</artifactId>
+                        </dependency>
+                    </jvmDependencies>
+                    <log>${basedir}/log/</log>
+                    <connectionAttempts>4</connectionAttempts>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
     <packaging>jar</packaging>
 
     <dependencies>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -54,13 +80,11 @@
             <artifactId>commons-csv</artifactId>
             <version>1.4</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
             <version>1.8.4</version>
         </dependency>
-
 
     </dependencies>
 </project>
