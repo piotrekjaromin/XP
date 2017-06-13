@@ -24,8 +24,8 @@ public class ProjectView {
     public void displayProject(List<Project> projectList) {
         this.projectList = projectList;
 
-        System.out.println("\nProjects: ");
-        projectList.stream().forEach(project -> System.out.println("Name: " + project.getName() + ", Id: " + project.getId()));
+        System.out.println("\nProjekty: ");
+        projectList.stream().forEach(project -> System.out.println("Nazwa projektu: " + project.getName() + ", Id: " + project.getId()));
 
         // musi tak byc, bo czekanie na wejscie w kontrolerze dziala tylko w przypadku aplikacji konsolowej, albo jakbysmy mieli to jakos reaktywnie zrobione
         // ale nie mamy, takze widok musi powiadamiac kontroler jak uzytkownik wykona jakas akcje
