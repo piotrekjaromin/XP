@@ -10,6 +10,9 @@
 9. Środowisko do testów akceptacyjnych: FitNesse
 10. IDE: Intellij Idea
 
+# Unit Test Coverage
+- w /coverage/index.html znajdują się raporty Cobertura z przeprowadzonych testów
+
 
 # FitNesse Acceptance Tests how to
 1. Zbuduj projekt - mvn clean install
