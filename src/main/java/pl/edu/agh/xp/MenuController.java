@@ -1,12 +1,10 @@
 package pl.edu.agh.xp;
 
-import com.apple.eio.FileManager;
 import pl.edu.agh.xp.files.FileManagerImpl;
 import pl.edu.agh.xp.timer.HoursRepository;
 import pl.edu.agh.xp.timer.TimerController;
 
 import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.Scanner;
 
 /**
@@ -50,7 +48,7 @@ public class MenuController {
     public void showProjectTimetable(String projectId) {
         System.out.println("Wybrano projekt: " + projectId);
         this.chosenProject = Integer.valueOf(projectId);
-        System.out.println("Aby rozpocząć monitorowanie pracy wybierz 1 \n Aby zakończyć działanie aplikacjiwybierz 2");
+        System.out.println("Aby rozpocząć monitorowanie pracy wybierz 1 \nAby zakończyć działanie aplikacjiwybierz 2");
         int userInput = readUserInput();
         while (userInput != 1 && userInput != 2) {
             System.out.println("Zły wybór - wybierz ponownie");

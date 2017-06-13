@@ -20,11 +20,11 @@ public class CompaniesView {
 
     public void showCompanies(List<Company> companies) {
         System.out.println();
-        companies.stream().forEach(company -> System.out.println("Company | id: " + company.getId() + ", name: " + company.getName()));
+        companies.stream().forEach(company -> System.out.println("Firma | id: " + company.getId() + ", nazwa: " + company.getName()));
     }
 
     public int chooseCompany() {
-        System.out.println("Wybierz firmę");
+        System.out.println("Wybierz firmę po ID:");
         return scanner.nextInt();
     }
 

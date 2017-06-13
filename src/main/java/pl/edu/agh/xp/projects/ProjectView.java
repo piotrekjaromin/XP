@@ -25,7 +25,7 @@ public class ProjectView {
         this.projectList = projectList;
 
         System.out.println("\nProjekty: ");
-        projectList.stream().forEach(project -> System.out.println("Nazwa projektu: " + project.getName() + ", Id: " + project.getId()));
+        projectList.stream().forEach(project -> System.out.println("Id: " + project.getId() + ", Nazwa projektu: " + project.getName()));
 
         // musi tak byc, bo czekanie na wejscie w kontrolerze dziala tylko w przypadku aplikacji konsolowej, albo jakbysmy mieli to jakos reaktywnie zrobione
         // ale nie mamy, takze widok musi powiadamiac kontroler jak uzytkownik wykona jakas akcje
@@ -33,7 +33,7 @@ public class ProjectView {
     }
 
     private void waitForUserInteraction() {
-        System.out.println("Wybierz projekt (0 by wrócić): ");
+        System.out.println("Wybierz projekt po ID (0 by wrócić): ");
 
         int userInput = readUserInput();
         while (userInput > projectList.size() || userInput < 0) {
